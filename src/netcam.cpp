@@ -217,7 +217,9 @@ static void netcam_url_parse(ctx_url *parse_url, const char *text_url)
     }
     if (((!parse_url->port) && (parse_url->service)) ||
         ((parse_url->port > 65535) && (parse_url->service))) {
-        if (mystreq(parse_url->service, "http")) {
+        if (mystreq(parse_url->service, "https")) {
+            parse_url->port = 443;
+        } else if (mystreq(parse_url->service, "http")) {
             parse_url->port = 80;
         } else if (mystreq(parse_url->service, "ftp")) {
             parse_url->port = 21;
