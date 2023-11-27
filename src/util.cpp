@@ -1294,6 +1294,13 @@ void util_exec_command(ctx_dev *cam, const char *command, char *filename, int fi
         /* Detach from parent */
         setsid();
 
+
+//        ************ test
+        MOTPLS_LOG(NTC, TYPE_ALL, NO_ERRNO, _("executing command %d"),
+                               stamp);
+//        *************** test
+
+
         execl("/bin/sh", "sh", "-c", stamp, " &",(char*)NULL);
 
         /* if above function succeeds the program never reach here */
